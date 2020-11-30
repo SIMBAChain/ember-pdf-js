@@ -88,6 +88,7 @@ export default Component.extend({
   currentMatch: undefined,
   currentMatchIdx: undefined,
   matchTotal: undefined,
+  loaded: undefined,
 
   // privates
   _topMargin: 10,
@@ -232,6 +233,9 @@ export default Component.extend({
         this.set('pdfTotalPages', linkService.pagesCount)
         this.set('pdfPage', linkService.page)
         this.sendAction('documentChanged', pdfDocument)
+        if (this.get('loaded')) {
+          this.get('loaded')()
+        }
       })
 
       this.set('loadingTask', loadingTask)
