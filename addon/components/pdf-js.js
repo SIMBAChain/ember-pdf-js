@@ -1,5 +1,12 @@
 /* global PDFJS */
-import Ember from 'ember'
+import { A } from '@ember/array'
+import Component from '@ember/component'
+import { computed, observer } from '@ember/object'
+import { reads } from '@ember/object/computed'
+import { inject as injectService } from '@ember/service'
+import { isEmpty } from '@ember/utils'
+import { run } from '@ember/runloop'
+
 import layout from '../templates/components/pdf-js'
 
 const {
@@ -8,17 +15,6 @@ const {
   PDFLinkService,
   PDFViewer
 } = PDFJS
-
-const {
-  A,
-  Component,
-  computed,
-  computed: {reads},
-  inject: {service: injectService},
-  isEmpty,
-  observer,
-  run
-} = Ember
 
 function scrollToMatch (pdfViewer, match) {
   let {pageIdx, matchIdx} = match
@@ -140,7 +136,7 @@ export default Component.extend({
         this.set('matchTotal', total)
       })
     }
-    pdfFindController.onUpdateState = (state/*, previous, total*/) => {
+    pdfFindController.onUpdateState = (state/*, previous, total */) => {
       run(() => {
         if (state === 3) {
           this.set('isSearchPending', true)

@@ -1,9 +1,0 @@
-{
-  "preset": "ember-suave",
-  "disallowSemicolons": true,
-  "requireSemicolons": false,
-  "disallowSpacesInFunction": false,
-  "disallowSpaceAfterObjectKeys": false,
-  "requireSpacesInsideObjectBrackets": false,
-  "excludeFiles": ["router.js", "app.js", "helpers/*.js"]
-}
